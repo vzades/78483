@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>_78483.progrma</StartupObject>
+    <StartupObject>_78483.MyTask</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
