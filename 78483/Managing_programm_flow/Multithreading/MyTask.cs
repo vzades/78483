@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 namespace _78483
 {
     class MyTask
@@ -41,6 +42,7 @@ namespace _78483
 
 
             //continus task
+
             Task<int> t2 = Task<int>.Run(() =>
             {
                 return 42; 
@@ -56,11 +58,9 @@ namespace _78483
                 var results = new Int32[3];
 
                 new Task(()=> results[0]=0,TaskCreationOptions.AttachedToParent).Start();
-                new Task(() => results[1] = 1, TaskCreationOptions.AttachedToParent).Start(); ;
+                new Task(() => results[1] = 1, TaskCreationOptions.AttachedToParent).Start();
                 new Task(() => results[2] = 2, TaskCreationOptions.AttachedToParent).Start();
-
-
-                return results;
+                return  results;
                
             });
 
@@ -72,6 +72,58 @@ namespace _78483
                 }
             });
 
+            //taskfactory 
+            Task<Int32[]> parent1 = Task.Run( ()=>
+            {
+                var results = new Int32[3];
+
+                TaskFactory tf = new TaskFactory(TaskCreationOptions.AttachedToParent, TaskContinuationOptions.ExecuteSynchronously);
+
+                tf.StartNew(() => results[0] == 1);
+                tf.StartNew(() => results[1] == 2);
+                tf.StartNew(() => results[2] == 3);
+
+                return results;
+            } 
+            );
+
+
+            var finaltask2 = parent1.ContinueWith((s)=> {
+
+                foreach (var item in s.Result)
+                {
+                    Console.WriteLine(item);
+                }
+
+            });
+
+            finaltask2.Wait();
+
+
+            //wait all 
+            Task[] alltask = new Task[3];
+            alltask[0] = Task.Run(() =>
+             {
+                 Thread.Sleep(1000);
+                 Console.WriteLine("1");
+                 return 1;
+             });
+
+            alltask[1] = Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("2");
+                return 2;
+            });
+
+            alltask[2] = Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("2");
+                return 3;
+            });
+
+            Task.WaitAll(alltask);
             Console.ReadKey();
 
         }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>_78483.MyTask</StartupObject>
+    <StartupObject>_78483.Managing_programm_flow.Prgramflow.MyFor</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,14 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyTask.cs" />
-    <Compile Include="polymmorphisim.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Managing_programm_flow\ManagingMultithreaidng\Lock.cs" />
+    <Compile Include="Managing_programm_flow\ManagingMultithreaidng\MycancelationToken.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\MycocurrentCollection.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\MyParaller.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\MyTask.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\polymmorphisim.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\Program.cs" />
+    <Compile Include="Managing_programm_flow\Prgramflow\Boolena.cs" />
+    <Compile Include="Managing_programm_flow\Prgramflow\MyFlow.cs" />
+    <Compile Include="Managing_programm_flow\Prgramflow\MyForeach.cs" />
+    <Compile Include="Managing_programm_flow\Prgramflow\Myswitch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadPool.cs" />
+    <Compile Include="Managing_programm_flow\Multithreading\ThreadPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Managing_programm_flow\Prgramflow\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
